@@ -33,10 +33,6 @@
   <body>
     <div class="grain" aria-hidden="true"></div>
     <div class="cursor" aria-hidden="true"></div>
-    <div class="grid-overlay" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-    </div>
 
     <header class="site-header">
       <a href="#top" class="brand" aria-label="Syntrix — home">
@@ -68,27 +64,21 @@
     <main id="top">
       <!-- ========== HERO ========== -->
       <section class="hero">
-        <div class="hero-stamps" aria-hidden="true">
-          <span>S—001</span>
-          <span>REV / 2026</span>
-          <span>FILE · MAIN</span>
-        </div>
-
         <h1 class="hero-title">
           <span class="reveal" style="--d:0ms">Systems,</span>
-          <span class="reveal italic" style="--d:120ms">quietly</span>
-          <span class="reveal" style="--d:220ms">engineered.</span>
+          <span class="reveal italic" style="--d:140ms">quietly</span>
+          <span class="reveal" style="--d:260ms">engineered.</span>
         </h1>
 
         <div class="hero-body">
-          <p class="hero-lede reveal" style="--d:420ms">
+          <p class="hero-lede reveal" style="--d:460ms">
             Syntrix is a small practice of engineers and consultants. We design
             software, modernize the infrastructure beneath it, and advise the
             people responsible for both — for companies that need their systems
             to do real work, not pose for screenshots.
           </p>
 
-          <div class="hero-actions reveal" style="--d:560ms">
+          <div class="hero-actions reveal" style="--d:600ms">
             <a href="#contact" class="btn btn-primary">
               <span>Start a conversation</span>
               <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
@@ -99,25 +89,17 @@
           </div>
         </div>
 
-        <aside class="hero-side reveal" style="--d:680ms" aria-label="At a glance">
-          <dl>
-            <div><dt>Founded</dt><dd>Prishtina, Kosovo</dd></div>
-            <div><dt>Practice</dt><dd>Software · Cloud · Advisory</dd></div>
-            <div><dt>Engagements</dt><dd>Project · Retainer · Embedded</dd></div>
-            <div><dt>Status</dt><dd><span class="pulse"></span> Accepting work for Q3</dd></div>
-          </dl>
+        <aside class="hero-now reveal" style="--d:720ms" aria-label="Currently">
+          <span class="now-label">Now</span>
+          <p class="now-line">
+            A small practice based in Prishtina, working across CET&nbsp;±&nbsp;6h —
+            software, cloud, and quiet advisory.
+          </p>
+          <p class="now-status">
+            <span class="pulse" aria-hidden="true"></span>
+            Limited intake open from Q3 2026.
+          </p>
         </aside>
-
-        <div class="hero-scroll reveal" style="--d:820ms" aria-hidden="true">
-          <span>Scroll</span>
-          <svg viewBox="0 0 24 40" width="14" height="22">
-            <rect x="1" y="1" width="22" height="38" rx="11" fill="none" stroke="currentColor" stroke-width="1" opacity=".4" />
-            <circle cx="12" cy="10" r="2.4" fill="currentColor">
-              <animate attributeName="cy" values="10;28;10" dur="2.4s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="1;.2;1" dur="2.4s" repeatCount="indefinite" />
-            </circle>
-          </svg>
-        </div>
       </section>
 
       <!-- ========== MARQUEE ========== -->
@@ -194,8 +176,8 @@
         </div>
 
         <ol class="service-list">
-          <li class="service" data-tilt>
-            <span class="service-num">/01</span>
+          <li class="service">
+            <span class="service-ord" aria-hidden="true">i</span>
             <div class="service-body">
               <h3>Software engineering</h3>
               <p>
@@ -207,11 +189,10 @@
                 <li>Web</li><li>APIs</li><li>Internal tools</li><li>Mobile</li>
               </ul>
             </div>
-            <span class="service-arrow" aria-hidden="true">↗</span>
           </li>
 
-          <li class="service" data-tilt>
-            <span class="service-num">/02</span>
+          <li class="service">
+            <span class="service-ord" aria-hidden="true">ii</span>
             <div class="service-body">
               <h3>Cloud &amp; infrastructure</h3>
               <p>
@@ -223,11 +204,10 @@
                 <li>AWS</li><li>GCP</li><li>Self-hosted</li><li>Migrations</li>
               </ul>
             </div>
-            <span class="service-arrow" aria-hidden="true">↗</span>
           </li>
 
-          <li class="service" data-tilt>
-            <span class="service-num">/03</span>
+          <li class="service">
+            <span class="service-ord" aria-hidden="true">iii</span>
             <div class="service-body">
               <h3>Technical advisory</h3>
               <p>
@@ -239,11 +219,10 @@
                 <li>Fractional CTO</li><li>Audits</li><li>Roadmaps</li>
               </ul>
             </div>
-            <span class="service-arrow" aria-hidden="true">↗</span>
           </li>
 
-          <li class="service" data-tilt>
-            <span class="service-num">/04</span>
+          <li class="service">
+            <span class="service-ord" aria-hidden="true">iv</span>
             <div class="service-body">
               <h3>Managed operations</h3>
               <p>
@@ -255,7 +234,6 @@
                 <li>SRE</li><li>On-call</li><li>Maintenance</li>
               </ul>
             </div>
-            <span class="service-arrow" aria-hidden="true">↗</span>
           </li>
         </ol>
       </section>
@@ -269,46 +247,42 @@
           </h2>
         </div>
 
-        <div class="principles">
-          <article class="principle">
-            <span class="p-num">i.</span>
-            <h3>Write it down first</h3>
-            <p>
-              Before code, a short document: what the system is for, who it
-              serves, what it must not do. The page is cheap; the bug after
-              launch isn't.
-            </p>
-          </article>
+        <div class="approach-prose">
+          <p class="approach-block">
+            <strong>We write it down first.</strong>
+            Before code, a short document: what the system is for, who it
+            serves, what it must not do. The page is cheap; the bug after
+            launch isn't. A page of writing trades a week of meetings for an
+            afternoon of thinking, and almost always replaces a quarter of
+            disagreement with a paragraph everyone has already agreed to.
+          </p>
 
-          <article class="principle">
-            <span class="p-num">ii.</span>
-            <h3>Build the boring parts well</h3>
-            <p>
-              Logging, backups, error states, the second-Tuesday-of-the-month
-              edge case. Boring done well is what people quietly rely on for
-              years.
-            </p>
-          </article>
+          <p class="approach-block">
+            <strong>We build the boring parts well.</strong>
+            Logging, backups, error states, the second-Tuesday-of-the-month
+            edge case — the unloved scaffolding that, when it works,
+            disappears from the conversation entirely. Boring done well is
+            what people quietly rely on for years, and is the closest thing
+            our trade has to compound interest.
+          </p>
 
-          <article class="principle">
-            <span class="p-num">iii.</span>
-            <h3>Stay close, then leave clean</h3>
-            <p>
-              We work alongside your team, share what we learn, and hand over
-              systems someone else can confidently inherit. No vendor lock,
-              no theatre.
-            </p>
-          </article>
+          <p class="approach-block">
+            <strong>We stay close, then leave clean.</strong>
+            We work alongside your team, share what we learn, and hand over
+            systems someone else can confidently inherit. No vendor lock,
+            no theatre, no &mdash; <em>so, about the renewal</em>. The mark of
+            good work is that the next person doesn't need us to keep it
+            running.
+          </p>
 
-          <article class="principle">
-            <span class="p-num">iv.</span>
-            <h3>Say no more than yes</h3>
-            <p>
-              We turn down work that doesn't fit, scope features that don't
-              earn their place, and tell you when the right answer is doing
-              less than you asked for.
-            </p>
-          </article>
+          <p class="approach-block">
+            <strong>We say no more than yes.</strong>
+            We turn down work that doesn't fit, scope features that don't
+            earn their place, and occasionally tell you the right answer is
+            doing less than you asked for. The cost of a small honest
+            conversation now is almost always smaller than the bill for
+            building the wrong thing carefully.
+          </p>
         </div>
       </section>
 

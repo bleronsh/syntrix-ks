@@ -48,7 +48,7 @@
     };
     requestAnimationFrame(render);
 
-    const hoverables = "a, button, [data-tilt], .contact-mail, .service, .btn";
+    const hoverables = "a, button, .contact-mail, .service, .btn";
     document.querySelectorAll(hoverables).forEach(el => {
       el.addEventListener("mouseenter", () => cursor.classList.add("is-hover"));
       el.addEventListener("mouseleave", () => cursor.classList.remove("is-hover"));
@@ -57,21 +57,27 @@
 
   /* ----- Reveal-on-scroll ----- */
   const targets = document.querySelectorAll(
-    "section .section-head, .practice-body, .practice-stats li, .service, .principle, .contact-inner > *, .foot-col, .wordmark span"
+    "section .section-head, .practice-body, .practice-stats li, .service, .approach-block, .contact-inner > *, .foot-col, .wordmark span"
   );
-  targets.forEach(el => el.classList.add("in-view-target"));
+  // Per-section stagger: each target's transition-delay is set by its position
+  // within its parent (so siblings reveal in source order, not intersection order).
+  targets.forEach(el => {
+    el.classList.add("in-view-target");
+    if (el.dataset.delay) return;
+    const siblings = Array.from(el.parentNode.children).filter(c =>
+      c.classList.contains("in-view-target")
+    );
+    const idx = siblings.indexOf(el);
+    el.style.transitionDelay = Math.min(idx, 5) * 50 + "ms";
+  });
 
   if ("IntersectionObserver" in window && !reduced) {
     const io = new IntersectionObserver(
       entries => {
-        entries.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            // staggered touch
-            const delay = (entry.target.dataset.delay || (i % 4) * 60) + "ms";
-            entry.target.style.transitionDelay = delay;
-            entry.target.classList.add("in-view");
-            io.unobserve(entry.target);
-          }
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in-view");
+          io.unobserve(entry.target);
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
@@ -106,16 +112,37 @@
     stats.forEach(el => (el.textContent = el.dataset.count));
   }
 
-  /* ----- Subtle parallax on hero side card ----- */
-  const side = document.querySelector(".hero-side");
+  /* ----- Subtle parallax on hero Now panel (rAF-throttled) ----- */
+  const side = document.querySelector(".hero-now");
   if (side && !reduced && matchMedia("(hover: hover)").matches) {
+    let ticking = false;
     window.addEventListener(
       "scroll",
       () => {
-        const y = Math.min(120, window.scrollY * 0.08);
-        side.style.transform = `translateY(${y}px)`;
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = Math.min(120, window.scrollY * 0.08);
+          side.style.transform = `translateY(${y}px)`;
+          ticking = false;
+        });
       },
       { passive: true }
     );
   }
+
+  /* ----- Pause marquee when off-screen ----- */
+  const marquee = document.querySelector(".marquee-track");
+  if (marquee && "IntersectionObserver" in window) {
+    const mIO = new IntersectionObserver(
+      ([entry]) => {
+        marquee.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+      },
+      { threshold: 0 }
+    );
+    mIO.observe(marquee.parentElement);
+  }
+
+  /* ----- Cursor: JS writes translate, CSS handles scale halo ----- */
+  // (The cursor element keeps the dot; the halo on hover is :hover-driven CSS.)
 })();
