@@ -11,7 +11,7 @@ framework — just static files served by GitHub Pages.
 
 - `index.html` — single-page site (hero, practice, services, approach, contact)
 - `styles.css` — full styling, design tokens, motion
-- `script.js` — clock, cursor, reveal-on-scroll, stat counters
+- `script.js` — custom cursor, magnetic buttons, marquee, reveal-on-scroll, stat counters, and the Three.js hero shader (Three.js loaded from CDN in `index.html`)
 - `CNAME` — custom domain (`syntrix-ks.com`)
 - `.nojekyll` — disable Jekyll on GitHub Pages
 - `robots.txt`, `sitemap.xml` — basic SEO hygiene
