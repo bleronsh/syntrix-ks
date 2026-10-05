@@ -16,7 +16,7 @@
   navLinks.addEventListener('click', function(e){ if(e.target.tagName==='A') navLinks.classList.remove('open'); });
 
   /* ---------------- marquee fill ---------------- */
-  var words = ['Backends','Distributed Systems','Kubernetes','Observability','Reliability','Cloud Native','Infrastructure as Code','Latency','Resilience','Data Platforms'];
+  var words = ['AI Agents','Document Intelligence','Workflow Automation','Private LLMs','Cited Answers','OCR','Email Intake','Compliance Checks','Model Evaluations','Human-in-the-loop'];
   var track = document.getElementById('marquee');
   function buildMarquee(){
     var html='';
@@ -34,35 +34,6 @@
     entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); revealObs.unobserve(en.target); } });
   }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
-
-  /* ---------------- stat counters ---------------- */
-  var statObs = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(!en.isIntersecting) return;
-      statObs.unobserve(en.target);
-      en.target.classList.add('in');
-      var stats = en.target.querySelectorAll('.stat');
-      stats.forEach(function(stat){
-        stat.classList.add('in');
-        var target = parseFloat(stat.getAttribute('data-count'));
-        var dec = stat.getAttribute('data-dec'); // e.g. .95 appended via suffix already
-        var valEl = stat.querySelector('.val');
-        if(reduced){ valEl.textContent = target; return; }
-        var start = null, dur = 1500;
-        function step(ts){
-          if(!start) start = ts;
-          var p = Math.min((ts-start)/dur, 1);
-          var eased = 1 - Math.pow(1-p, 3);
-          valEl.textContent = Math.round(eased*target);
-          if(p<1) requestAnimationFrame(step);
-          else valEl.textContent = target;
-        }
-        requestAnimationFrame(step);
-      });
-    });
-  }, {threshold:.3});
-  var statsEl = document.getElementById('stats');
-  if(statsEl) statObs.observe(statsEl);
 
   /* ---------------- service card cursor glow ---------------- */
   document.querySelectorAll('.svc').forEach(function(card){

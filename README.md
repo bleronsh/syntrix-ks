@@ -1,7 +1,7 @@
 # syntrix-ks
 
-The marketing site for **Syntrix** — a small practice of engineers and
-consultants offering software, cloud, and advisory work. Lives at
+The marketing site for **Syntrix**, which builds AI agents and automation
+platforms for document-heavy work, starting with TenderDesk. Lives at
 <https://syntrix-ks.com>.
 
 ## Stack
@@ -9,9 +9,9 @@ consultants offering software, cloud, and advisory work. Lives at
 Plain HTML, CSS, and a sprinkle of vanilla JS. No build step, no
 framework — just static files served by GitHub Pages.
 
-- `index.html` — single-page site (hero, practice, services, approach, contact)
+- `index.html` — single-page site (hero, what we do, products, services, approach, contact)
 - `styles.css` — full styling, design tokens, motion
-- `script.js` — custom cursor, magnetic buttons, marquee, reveal-on-scroll, stat counters, and the Three.js hero shader (Three.js loaded from CDN in `index.html`)
+- `script.js` — custom cursor, magnetic buttons, marquee, reveal-on-scroll, and the Three.js hero shader (Three.js loaded from CDN in `index.html`)
 - `CNAME` — custom domain (`syntrix-ks.com`)
 - `.nojekyll` — disable Jekyll on GitHub Pages
 - `robots.txt`, `sitemap.xml` — basic SEO hygiene
